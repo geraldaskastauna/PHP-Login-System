@@ -7,4 +7,8 @@
   // Our config is below
   define('ALLOW_FOOTER', true);
 
+  // Include the db.php file;
+  include_once "classes/db.php";
+
+  $con = DB::getConnection();
 ?>

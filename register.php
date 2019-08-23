@@ -10,15 +10,11 @@ require_once "inc/config.php"
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Index Page</title>
+    <title>Register new account</title>
 
     <meta charset="utf-8"/>
     <meta http-equiv="Cache-Control" content="public" />
-    <meta name="copyrights" content="Geraldas Kastauna"/>
-    <meta name="language" content="EN"/>
     <meta name="robots" content="index,follow"/>
-    <meta name="description" content="Personal website of experience, projects and life of Geraldas Kastuana"/>
-    <meta name="keywords" content="blog, technology, personal, fullstack, developer"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <!-- UIkit CSS -->
@@ -46,7 +42,9 @@ require_once "inc/config.php"
               </div>
             </div>
 
-            
+            <div class="uk-margin uk-alert uk-alert-danger js-error" style='display: none'>
+
+            </div>
 
             <div class="uk-margin">
               <button class="uk-button uk-button-default" type="submit">Register</button>
