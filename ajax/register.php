@@ -1,44 +1,50 @@
 <?php
 
-// Allow the config
-define ('__CONFIG__', true);
-// Require the config
-require_once "../inc/config.php";
+	// Allow the config
+	define('__CONFIG__', true);
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-  // alwasy returns json format (easier to read)
-  header('Content-Type: application/json');
+	// Require the config
+	require_once "../inc/config.php";
 
-  $return = [];
+	if($_SERVER['REQUEST_METHOD'] == 'POST' or 1==1) {
+		// Always return JSON format
+		// header('Content-Type: application/json');
 
-  $email = Filter::String($_POST['email']);
-  $email = strtolower($email);
+		$return = [];
 
-  // Make sure the user does not exist
-  $findUser = $con->prepare("SELECT user_id FROM users WHERE email = LOWER(:email) LIMIT 1");
-  $findUser->bindParam(':email', $email, PDO::PARAM_STR); // Pull variable out of SQL
-  $findUser->execute();
+		$email = Filter::String( $_POST['email'] );
 
-  if($findUser->rowCount() == 1) {
-    // User exists
-    $return['error'] = "You already have an account.";
-  } else{
-    // User doesnt exist
-    $addUser = $con-prepare("INSERT INTO users(email, password) VALUES(:email, :password)");
-    $addUser->bindParam(':email', $email, PDO::PARAM_STR);
-    $addUser->bindParam(':password', $password, PDO::PARAM_STR);
-    $addUser->execute();
-  }
-  // Make sure the user CAN be added AND is added
+		// Make sure the user does not exist.
+		$findUser = $con->prepare("SELECT user_id FROM users WHERE email = LOWER(:email) LIMIT 1");
+		$findUser->bindParam(':email', $email, PDO::PARAM_STR);
+		$findUser->execute();
 
-  // Return the proper information to javascript to redirect us
+		if($findUser->rowCount() == 1) {
+			// User exists
+			// We can also check to see if they are able to log in.
+			$return['error'] = "You already have an account";
+			$return['is_logged_in'] = false;
+		} else {
+			// User does not exist, add them now.
 
-  $return['redirect'] = './index.php?this-was-a-redirect';
+			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-  echo json_encode($return, JSON_PRETTY_PRINT); exit;
+			$addUser = $con->prepare("INSERT INTO users(email, password) VALUES(LOWER(:email), :password)");
+			$addUser->bindParam(':email', $email, PDO::PARAM_STR);
+			$addUser->bindParam(':password', $password, PDO::PARAM_STR);
+			$addUser->execute();
 
-} else {
-  // Die and redirect the user.
-  exit("test");
-  }
+			$user_id = $con->lastInsertId();
+
+			$_SESSION['user_id'] = (int) $user_id;
+
+			$return['redirect'] = '/dashboard.php?message=welcome';
+			$return['is_logged_in'] = true;
+		}
+
+		echo json_encode($return, JSON_PRETTY_PRINT); exit;
+	} else {
+		// Die. Kill the script. Redirect the user. Do something regardless.
+		exit('Invalid URL');
+	}
 ?>

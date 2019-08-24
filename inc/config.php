@@ -7,6 +7,11 @@
   // Our config is below
   define('ALLOW_FOOTER', true);
 
+  /* Allow errors
+  error_reporting(-1);
+  ini_set('display_errors', 'On');
+  */
+
   // Include the db.php file;
   include_once "classes/db.php";
   include_once "classes/filter.php";
