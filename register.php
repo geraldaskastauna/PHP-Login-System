@@ -30,19 +30,27 @@
 
 				<h2>Register</h2>
 
+				<div class="uk-margin">
+						<label class="uk-form-label" for="form-stacked-text">Username</label>
+						<div class="uk-form-controls">
+								<input class="uk-input username" id="form-stacked-text" type="text" required='required' placeholder="Enter your username">
+						</div>
+				</div>
+
 			    <div class="uk-margin">
 			        <label class="uk-form-label" for="form-stacked-text">Email</label>
 			        <div class="uk-form-controls">
-			            <input class="uk-input" id="form-stacked-text" type="email" required='required' placeholder="email@email.com">
+			            <input class="uk-input email" id="form-stacked-text" type="email" required='required' placeholder="Enter your email address">
 			        </div>
 			    </div>
 
 			    <div class="uk-margin">
-			        <label class="uk-form-label" for="form-stacked-text">Passphrase</label>
+			        <label class="uk-form-label" for="form-stacked-text">Password</label>
 			        <div class="uk-form-controls">
-			            <input class="uk-input" id="form-stacked-text" type="password" required='required' placeholder="Your passphrase">
+			            <input class="uk-input password" id="form-stacked-text" type="password" required='required' placeholder="Enter your password">
 			        </div>
 			    </div>
+
 
 			    <div class="uk-margin uk-alert uk-alert-danger js-error" style='display: none;'></div>
 

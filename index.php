@@ -27,6 +27,13 @@
   			echo "Hello world. Today is: ";
   			echo date("Y m d");
   		?>
+			<p>
+					Add to page: </br>
+					Username, name, firstname in register</br>
+					Email, sms confirmation in register</br>
+					Change email,password,username in dashboard</br>
+					Invite friends to page option in module</br>
+					news feed, friends feed</br></p>
   		<p>
   			<a href="/login.php">Login</a>
   			<a href="/register.php">Register</a>

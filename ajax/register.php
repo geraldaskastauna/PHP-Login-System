@@ -11,23 +11,32 @@
 		// header('Content-Type: application/json');
 
 		$return = [];
-
+		$username = Filter::String( $_POST['username'] );
 		$email = Filter::String( $_POST['email'] );
 
 		// Make sure the user does not exist.
 		$user_found = User::Find($email, true);
+		$username_found = User::FindUsername($username, true);
 
 		if($user_found) {
 			// User exists
 			// We can also check to see if they are able to log in.
+
 			$return['error'] = "You already have an account";
 			$return['is_logged_in'] = false;
+		} else if($username_found) {
+			// Username exists
+
+			$return['error'] = "This username already exists";
+			$return['is_logged_in'] = false;
 		} else {
+
 			// User does not exist, add them now.
 
 			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-			$addUser = $con->prepare("INSERT INTO users(email, password) VALUES(LOWER(:email), :password)");
+			$addUser = $con->prepare("INSERT INTO users(username, email, password) VALUES(:username, LOWER(:email), :password)");
+			$addUser->bindParam(':username', $username, PDO::PARAM_STR);
 			$addUser->bindParam(':email', $email, PDO::PARAM_STR);
 			$addUser->bindParam(':password', $password, PDO::PARAM_STR);
 			$addUser->execute();

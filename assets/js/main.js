@@ -6,15 +6,29 @@ $(document)
 	var _error = $(".js-error", _form);
 
 	var dataObj = {
-		email: $("input[type='email']", _form).val(),
-		password: $("input[type='password']", _form).val()
+		username: $(".username", _form).val(),
+		email: $(".email", _form).val(),
+		password: $(".password", _form).val()
 	};
 
-	if(dataObj.email.length < 6) {
-		_error
+	if (dataObj.username.length >= 16) {
+			_error
+			.text("Username is too long. Maximum characters allowed is 16.")
+			.show();
+		return false;
+
+	}	else if(dataObj.username.length < 4) {
+			_error
+			.text("Username is too short. Minimum characters allowed is 4.")
+			.show();
+		return false;
+
+	}	else if (dataObj.email.length < 6) {
+			_error
 			.text("Please enter a valid email address")
 			.show();
 		return false;
+
 	} else if (dataObj.password.length < 6) {
 		_error
 			.text("Please enter a passphrase that is at least 6 characters long.")
@@ -60,8 +74,8 @@ $(document)
 	var _error = $(".js-error", _form);
 
 	var dataObj = {
-		email: $("input[type='email']", _form).val(),
-		password: $("input[type='password']", _form).val()
+		email: $(".email", _form).val(),
+		password: $(".password", _form).val()
 	};
 
 	if(dataObj.email.length < 6) {
