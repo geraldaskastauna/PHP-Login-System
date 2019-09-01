@@ -15,7 +15,7 @@
 		$email = Filter::String( $_POST['email'] );
 
 		// Make sure the user does not exist.
-		$user_found = FindUser($con, $email);
+		$user_found = User::Find($email, true);
 
 		if($user_found) {
 			// User exists
