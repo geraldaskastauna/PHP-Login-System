@@ -1,13 +1,11 @@
-<?php 
+<?php
 
 	// Allow the config
 	define('__CONFIG__', true);
 	// Require the config
-	require_once "inc/config.php"; 
+	require_once "inc/config.php";
 
-	echo $_SESSION['user_id'] . ' is your user id';
-	exit;
-
+	ForceLogin();
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +25,10 @@
   <body>
 
   	<div class="uk-section uk-container">
-  		
+			<p>Welcome <?php echo $_SESSION['user_id']; ?> !</p>
+			<a href="/logout.php">Logout</a>
   	</div>
 
-  	<?php require_once "inc/footer.php"; ?> 
+  	<?php require_once "inc/footer.php"; ?>
   </body>
 </html>

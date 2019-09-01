@@ -34,7 +34,7 @@
 
 				} else {
 				// Invalid user
-				$return['error'] = "Invalid user/password combo";
+				$return['error'] = "Invalid email or password. Try again.";
 			}
 
 		} else {
