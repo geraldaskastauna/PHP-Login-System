@@ -26,5 +26,24 @@ class Page {
     }
   }
 
+	static function ForceHome() {
+		if(isset($_SESSION['user_id'])) {
+		// user is logged in
+			header("Location: /home.php"); exit;
+	} else {
+		// user is not logged in
+
+		}
+	}
+
+	static function ForceIndex() {
+		if(isset($_SESSION['user_id'])) {
+		// user is logged in
+	} else {
+		// user is not logged in
+		header("Location: /index.php"); exit;
+		}
+	}
+
 }
 ?>

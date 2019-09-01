@@ -5,7 +5,7 @@
 	// Require the config
 	require_once "inc/config.php";
 
-	Page::ForceHome();
+	Page::ForceIndex();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +36,7 @@
 					Invite friends to page option in module</br>
 					news feed, friends feed</br></p>
   		<p>
-  			<a href="/login.php">Login</a>
-  			<a href="/register.php">Register</a>
+  			<a href="/logout.php">Logout</a>
 				<a href="/dashboard.php">Dashboard</a>
   		</p>
   	</div>
