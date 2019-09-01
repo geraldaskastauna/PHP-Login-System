@@ -22,7 +22,7 @@ class User {
 
 		$user_id = Filter::Int($user_id);
 
-		$user = $this->con->prepare("SELECT user_id, username, email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
+		$user = $this->con->prepare("SELECT user_id, username, firstname, lastname, email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
 		$user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 		$user->execute();
 
@@ -31,6 +31,8 @@ class User {
 			$user = $user->fetch(PDO::FETCH_OBJ);
 
 			$this->username =(string) $user->username;
+			$this->firstname=(string) $user->firstname;
+			$this->lastname =(string) $user->lastname;
 			$this->email		=(string) $user->email;
 			$this->user_id	=(int) $user->user_id;
 			$this->reg_time	=(string) $user->reg_time;
@@ -46,7 +48,7 @@ class User {
 
 			$email = (string) Filter::String($email);
 
-		  $findUser = $con->prepare("SELECT user_id, username, password FROM users WHERE email = LOWER(:email) LIMIT 1");
+		  $findUser = $con->prepare("SELECT user_id, username, firstname, lastname, password FROM users WHERE email = LOWER(:email) LIMIT 1");
 		  $findUser->bindParam(':email', $email, PDO::PARAM_STR);
 		  $findUser->execute();
 

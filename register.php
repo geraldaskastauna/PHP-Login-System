@@ -31,23 +31,37 @@
 				<h2>Register</h2>
 
 				<div class="uk-margin">
-						<label class="uk-form-label" for="form-stacked-text">Username</label>
+						<label class="uk-form-label" for="form-stacked-text">User name</label>
 						<div class="uk-form-controls">
-								<input class="uk-input username" id="form-stacked-text" type="text" required='required' placeholder="Enter your username">
+								<input class="uk-input username" id="form-stacked-text" type="text" required='required' placeholder="Enter your USER name">
+						</div>
+				</div>
+
+				<div class="uk-margin">
+						<label class="uk-form-label" for="form-stacked-text">First name</label>
+						<div class="uk-form-controls">
+								<input class="uk-input firstname" id="form-stacked-text" type="text" required='required' placeholder="Enter your FIRST name">
+						</div>
+				</div>
+
+				<div class="uk-margin">
+						<label class="uk-form-label" for="form-stacked-text">Last name</label>
+						<div class="uk-form-controls">
+								<input class="uk-input lastname" id="form-stacked-text" type="text" required='required' placeholder="Enter your LAST name">
 						</div>
 				</div>
 
 			    <div class="uk-margin">
 			        <label class="uk-form-label" for="form-stacked-text">Email</label>
 			        <div class="uk-form-controls">
-			            <input class="uk-input email" id="form-stacked-text" type="email" required='required' placeholder="Enter your email address">
+			            <input class="uk-input email" id="form-stacked-text" type="email" required='required' placeholder="Enter your EMAIL address">
 			        </div>
 			    </div>
 
 			    <div class="uk-margin">
 			        <label class="uk-form-label" for="form-stacked-text">Password</label>
 			        <div class="uk-form-controls">
-			            <input class="uk-input password" id="form-stacked-text" type="password" required='required' placeholder="Enter your password">
+			            <input class="uk-input password" id="form-stacked-text" type="password" required='required' placeholder="Enter your PASSWORD">
 			        </div>
 			    </div>
 

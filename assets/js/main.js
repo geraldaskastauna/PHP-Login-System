@@ -7,6 +7,8 @@ $(document)
 
 	var dataObj = {
 		username: $(".username", _form).val(),
+		firstname: $(".firstname", _form).val().substr(0,1).toUpperCase()+$(".firstname", _form).val().substr(1),
+		lastname: $(".lastname", _form).val().substr(0,1).toUpperCase()+$(".lastname", _form).val().substr(1),
 		email: $(".email", _form).val(),
 		password: $(".password", _form).val()
 	};

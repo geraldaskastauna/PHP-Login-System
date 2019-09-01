@@ -39,6 +39,22 @@ class Filter {
 	}
 
 	/**
+	 *  @param	string	$firstname		firstname to filter before putting inside InnoDB
+	 *  @return            			Filters and returns a valid or invalid firstname
+	 */
+	public static function Firstname( $firstname ) {
+		return filter_var( $firstname , FILTER_SANITIZE_FIRSTNAME);
+	}
+
+	/**
+	 *  @param	string	$lastname		lastname to filter before putting inside InnoDB
+	 *  @return            			Filters and returns a valid or invalid lastname
+	 */
+	public static function Lastname( $lastname ) {
+		return filter_var( $lastname , FILTER_SANITIZE_LASTNAME);
+	}
+
+	/**
 	 *  @param	string	$url		String to filter before putting inside InnoDB
 	 *  @return            			Filters and returns a valid or invalid URL
 	 */

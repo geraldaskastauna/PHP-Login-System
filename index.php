@@ -29,7 +29,7 @@
   		?>
 			<p>
 					Add to page: </br>
-					Username, name, firstname in register</br>
+					Username, name, firstname in register - <b>DONE</b></br>
 					Email, sms confirmation in register</br>
 					Change email,password,username in dashboard</br>
 					Invite friends to page option in module</br>

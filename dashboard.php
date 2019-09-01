@@ -28,8 +28,10 @@
 
   	<div class="uk-section uk-container">
 			<h2>Dashboard</h2>
-			<p>Hello, <?php echo $User->username; ?></p>
-			<p>Register date: <?php echo $User->reg_time; ?></p>
+			<p>Hello, <b><?php echo $User->firstname . " " . $User->lastname; ?></b></p>
+			<p>Your nickname is: <b><?php echo $User->username; ?></b></p>
+			<p>Date of user register: <?php echo $User->reg_time; ?></p>
+			<a href="/index.php">Home</a>
 			<a href="/logout.php">Logout</a>
   	</div>
 

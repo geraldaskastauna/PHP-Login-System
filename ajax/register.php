@@ -11,6 +11,9 @@
 		// header('Content-Type: application/json');
 
 		$return = [];
+
+		$firstname = Filter::String( $_POST['firstname'] );
+		$lastname = Filter::String( $_POST['lastname'] );
 		$username = Filter::String( $_POST['username'] );
 		$email = Filter::String( $_POST['email'] );
 
@@ -22,7 +25,7 @@
 			// User exists
 			// We can also check to see if they are able to log in.
 
-			$return['error'] = "You already have an account";
+			$return['error'] = "An account with this email already exists";
 			$return['is_logged_in'] = false;
 		} else if($username_found) {
 			// Username exists
@@ -35,8 +38,10 @@
 
 			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-			$addUser = $con->prepare("INSERT INTO users(username, email, password) VALUES(:username, LOWER(:email), :password)");
+			$addUser = $con->prepare("INSERT INTO users(username, firstname, lastname, email, password) VALUES(:username, :firstname, :lastname, LOWER(:email), :password)");
 			$addUser->bindParam(':username', $username, PDO::PARAM_STR);
+			$addUser->bindParam(':firstname', $firstname, PDO::PARAM_STR);
+			$addUser->bindParam(':lastname', $lastname, PDO::PARAM_STR);
 			$addUser->bindParam(':email', $email, PDO::PARAM_STR);
 			$addUser->bindParam(':password', $password, PDO::PARAM_STR);
 			$addUser->execute();
